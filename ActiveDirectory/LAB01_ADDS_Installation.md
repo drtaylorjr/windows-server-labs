@@ -28,7 +28,8 @@ Install the Active Directory Domain Services (AD DS) role and create the **lab.l
 Server Manager was launched to begin configuring server roles and features.
 
 **Screenshot:**
-![Server Manager Dashboard](../Screenshots/LAB01_Step1_ServerManager.png)
+![Server Manager Dashboard](../Screenshots/Step_1_ServerManger.png)
+
 
 ---
 
@@ -43,7 +44,8 @@ Server Manager → Manage → Add Roles and Features → Active Directory Domain
 ```
 
 **Screenshot:**
-![AD DS Installation](../Screenshots/LAB01_Step2_ADDSInstall.png)
+![AD DS Installation](../Screenshots/Step_2_ADDSInstall.png)
+
 
 ---
 
@@ -58,7 +60,8 @@ Ran the AD DS Configuration Wizard:
 * Allowed automatic reboot after installation
 
 **Screenshot:**
-![Add New Forest](../Screenshots/LAB01_Step3_NewForest.png)
+![Add New Forest](../Screenshots/Step3_NewForest.png)
+
 
 ---
 
@@ -70,7 +73,8 @@ Opened **Active Directory Users and Computers (ADUC)** to confirm:
 * Default containers = Builtin, Computers, Domain Controllers, Users
 
 **Screenshot:**
-![ADUC Domain View](../Screenshots/LAB01_Step4_ADUC.png)
+![ADUC Domain View](../Screenshots/Step4_ADUC.png)
+
 
 ---
 
