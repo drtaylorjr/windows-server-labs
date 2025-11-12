@@ -28,7 +28,7 @@ Install the Active Directory Domain Services (AD DS) role and create the **lab.l
 Server Manager was launched to begin configuring server roles and features.
 
 **Screenshot:**
-![Server Manager Dashboard](../Screenshots/Step_1_ServerManger.png)
+![Server Manager Dashboard](../Screenshots/Step1_ServerManger.png)
 
 
 ---
@@ -44,7 +44,7 @@ Server Manager → Manage → Add Roles and Features → Active Directory Domain
 ```
 
 **Screenshot:**
-![AD DS Installation](../Screenshots/Step_2_ADDSInstall.png)
+![AD DS Installation](../Screenshots/Step2_ADDSInstall.png)
 
 
 ---
