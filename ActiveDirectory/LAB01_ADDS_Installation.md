@@ -1,6 +1,6 @@
 # 📘 **LAB 1 — Active Directory Domain Services (AD DS) Installation**
 
-**Date:** *(add today’s date)*
+**Date:** *November 12, 2025*
 **Skills Practiced:** Installing AD DS, creating a domain, promoting a Domain Controller
 **Tools Used:** Windows Server 2022, Server Manager, Azure VM, RDP
 **Difficulty:** Beginner
