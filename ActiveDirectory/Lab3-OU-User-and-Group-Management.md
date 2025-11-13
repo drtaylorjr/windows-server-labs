@@ -1,135 +1,126 @@
-# Lab 3: OU, User, and Group Management in Active Directory
+# 🧪 Lab 3: OU, User, and Group Management in Active Directory
 
-## Lab Objective
-Set up Organizational Units (OUs), create user accounts, create security groups, and assign users to appropriate groups inside Active Directory using ADUC (Active Directory Users and Computers).
-
----
-
-## Lab Environment
-- **Platform:** Azure VM  
-- **OS:** Windows Server 2022  
-- **Role:** Domain Controller (AD DS Installed)  
-- **Domain:** `corp.local`  
-- **User:** Logged in as Domain Administrator  
-- **Tools Used:** Active Directory Users and Computers (ADUC)
+## 🔎 Overview
+This lab demonstrates how to create a clean organizational structure inside Active Directory using Organizational Units (OUs), users, and security groups. This mirrors real help desk + sysadmin tasks such as user provisioning, onboarding, and permission management.
 
 ---
 
-## Step-by-Step Instructions
+# 🏗️ **Step-by-Step Process**
 
-### ✅ Step 1: Launch Active Directory Users and Computers (ADUC)
-- Open **Server Manager**
-- Click **Tools > Active Directory Users and Computers**
-- Confirm the domain is visible (`corp.local`)
-
-📸 **Screenshot 1:** ADUC console open on domain `corp.local`
-
----
-
-### ✅ Step 2: Create Parent OU `_Corp`
-- Right‑click the domain (`corp.local`)
-- Select **New > Organizational Unit**
-- Name it `_Corp`
-
-📸 **Screenshot 2:** `_Corp` OU created under domain
+## **Step 1 — Open Active Directory Users and Computers (ADUC)**  
+- After promoting the server to a Domain Controller, open **ADUC** from:  
+  **Server Manager → Tools → Active Directory Users and Computers**
+ 
+![Step 1 - ADUC](../Screenshots/lab3_step1_aduc.png)
 
 ---
 
-### ✅ Step 3: Create Sub‑OUs `Users` and `Groups`
-- Right‑click `_Corp` > **New > Organizational Unit**
-- Name the first OU **Users**
-- Repeat and create **Groups**
-
-📸 **Screenshot 3:** OUs `Users` and `Groups` created under `_Corp`
-
----
-
-### ✅ Step 4: Create New User Accounts
-- Right‑click the **Users** OU > **New > User**
-- Create the following accounts:
-
-#### **John Doe**
-- First Name: John  
-- Last Name: Doe  
-- Username: `jdoe`  
-- Password: `P@ssword1`  
-- Uncheck: *User must change password at next logon*
-
-📸 **Screenshot 4:** John Doe account creation window
-
-#### **Jane Doe**
-- First Name: Jane  
-- Last Name: Doe  
-- Username: `jadoe`  
-- Password: `P@ssword1`  
-- Uncheck: *User must change password at next logon*
-
-📸 **Screenshot 5:** Jane Doe account creation window
+## **Step 2 — Create the Root OU (_Corp)**  
+- Right‑click the domain `corp.local` → **New → Organizational Unit**  
+- Name it: **_Corp**  
+- This creates a clean container for all company resources.
+ 
+![Step 2 - _Corp OU](../Screenshots/lab3_step2_corp_ou.png)
 
 ---
 
-### ✅ Step 5: Create Security Groups
-- Right‑click the **Groups** OU > **New > Group**
-- Create the following:
+## **Step 3 — Create Sub-OUs (Users & Groups)**  
+Inside `_Corp`, create two OUs:
 
-#### **Accounting**
-- Group Scope: Global  
-- Group Type: Security  
+- **Users**  
+- **Groups**
 
-#### **HR**
-- Group Scope: Global  
-- Group Type: Security  
-
-📸 **Screenshot 6:** Accounting group created  
-📸 **Screenshot 7:** HR group created
+This separation follows Microsoft best practices and keeps objects organized.
+ 
+![Step 3 - Sub-OUs](../Screenshots/lab3_step3_sub_ous.png)
 
 ---
 
-### ✅ Step 6: Add Users to Groups
-- Right-click **Accounting** > **Properties > Members > Add**
-  - Add: `jdoe`
-- Right-click **HR** > **Properties > Members > Add**
-  - Add: `jadoe`
+## **Step 4 — Create Domain Users (John Doe & Jane Doe)**  
+Inside `_Corp > Users`:
 
-📸 **Screenshot 8:** jdoe added to Accounting  
-📸 **Screenshot 9:** jadoe added to HR
+Create two users:
 
----
+### **User 1**
+- Name: **John Doe**
+- Username: **jdoe**
+- Domain login: `jdoe@corp.local`
 
-### ✅ Step 7: View Password Policy (Optional)
-- Open **Group Policy Management**
-- Expand:
-  - `Forest: corp.local`
-  - `Domains`
-  - `corp.local`
-- Right‑click **Default Domain Policy** > **Edit**
-- Navigate:
-  `Computer Configuration > Policies > Windows Settings > Security Settings > Account Policies > Password Policy`
+![Step 4a - John Doe](../Screenshots/lab3_step4_john_doe.png)
 
-📸 **Screenshot 10:** Default Domain Password Policy displayed
+### **User 2**
+- Name: **Jane Doe**
+- Username: **jadoe**
+- Domain login: `jadoe@corp.local`
+
+![Step 4b - Jane Doe](../Screenshots/lab3_step4_jane_doe.png)
 
 ---
 
-## Completion Checklist
+## **Step 5 — Create Security Groups (HR, Accounting)**  
+Inside `_Corp > Groups`:
+
+Create two **Security Groups**:
+- **HR**
+- **Accounting**
+
+(Use **Global** scope and **Security** type — default and correct for domain users)
+ 
+![Step 5 - HR Group](../Screenshots/lab3_step5_hr_group.png)  
+![Step 5 - Accounting Group](../Screenshots/lab3_step5_accounting_group.png)
+
+---
+
+## **Step 6 — Add Users to Groups**  
+This simulates real‑world permission assignment.
+
+- Add **jdoe** → **HR**  
+- Add **jadoe** → **Accounting**
+
+![Step 6 - jdoe Added](../Screenshots/lab3_step6_add_jdoe.png)  
+![Step 6 - jadoe Added](../Screenshots/lab3_step6_add_jadoe.png)
+
+---
+
+## **Step 7 — (Optional) View Default Domain Password Policy**  
+Navigate to:
+
+**Group Policy Management → Default Domain Policy →  
+Computer Configuration → Policies → Windows Settings → Security Settings → Account Policies → Password Policy**
+
+This shows default requirements (password length, history, age, etc.)
+
+![Step 7 - Password Policy](../Screenshots/lab3_step7_password_policy.png)
+
+---
+
+# ✅ Completion Checklist
 
 | Task                           | Status |
-| ------------------------------ | ------ |
-| AD DS Installed                | ✅ |
+|-------------------------------|--------|
+| AD DS Installed               | ✅ |
 | Domain Promoted (`corp.local`) | ✅ |
-| ADUC Opened                    | ✅ |
-| OUs Created (`_Corp > Users`)  | ✅ |
-| Users Created                  | ✅ |
-| Groups Created                 | ✅ |
-| Users Assigned to Groups       | ✅ |
-| Password Policy Viewed         | ✅ (optional) |
-| Screenshots Taken              | ✅ |
+| ADUC Launched                 | ✅ |
+| `_Corp` OU Created            | ✅ |
+| Users & Groups OUs Created    | ✅ |
+| John Doe Created              | ✅ |
+| Jane Doe Created              | ✅ |
+| HR & Accounting Groups Created | ✅ |
+| Users Added to Groups         | ✅ |
+| Password Policy Viewed        | ✅ (optional) |
+| Screenshots Uploaded          | ✅ |
 
 ---
 
-## Notes
-- OU naming convention (`_Corp`) forces it to appear at the top for easier management.  
-- Password complexity requirements enforced by default.  
-- Group membership simulates real-world role-based access control.  
+
+---
+
+# 🧠 What You Learned
+- How to structure Active Directory using OUs  
+- How to create domain users and groups  
+- How to assign users to security groups (permissions model)  
+- Where password policies are managed (Group Policy)  
+- Core skills used daily by Help Desk, Desktop Support, and Sysadmins  
 
 ---
 
